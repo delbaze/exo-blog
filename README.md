@@ -14,8 +14,9 @@ On prévoira une route pour la création d'un article (elle aussi, par soucis de
 Pour se faire, nous allons devoir : 
  - créer le dossier "**backend**"
  - initialiser le projet avec **npm init**
- - installer ce qui nous permettra de gérer la base de données (sqlite, typeorm).
- - démarrer le projet express
+ - prévoir le gitignore (qui comportera notre node_modules, le package-lock.json)
+ - installer ce qui nous permettra de gérer la base de données (sqlite, typeorm) et créer le fichier "datasource" pour s'y connecter
+ - démarrer le projet express (depuis le fichier index.ts)
  - prévoir nos routes (dans des dossiers dédiés) de CRUD (Create, Read, Update, Delete).
  
 De mon côté je prévoir comme route, la création, l'édition et  la suppression d'un article sans oublier la récupération d'un seul article.
