@@ -5,8 +5,8 @@ const router = Router();
 
 router.get("/list", async (req: Request, res: Response) => {
   //* Récupération de la liste des articles
-  const list =  await new ArticleService().list();
-  res.send(list)
+  const list = await new ArticleService().list();
+  res.send(list);
 });
 router.post("/add", async (req: Request, res: Response) => {
   //* Création d'un article
@@ -20,6 +20,16 @@ router.post("/add", async (req: Request, res: Response) => {
   }
 });
 
+router.get("/view/:id", async (req: Request, res: Response) => {
+  const id = req.params.id;
+  try {
+    const article = await new ArticleService().findOne(+id);
+    res.send(article);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+});
 router.patch("/update/:id", async (req: Request, res: Response) => {
   //* Modification d'un article
   const id = req.params.id;
