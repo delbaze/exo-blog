@@ -13,6 +13,10 @@ export default class CommentaireService {
     return await this.db.find();
   }
 
+  async listByArticleId(id: number) {
+    return await this.db.findBy({ article: { id } });
+  }
+
   async findOne(id: number) {
     return await this.db.findOneBy({ id });
   }

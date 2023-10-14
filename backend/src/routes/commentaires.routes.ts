@@ -4,11 +4,19 @@ import { ICreateCommentaire } from "../types/Commentaire";
 const router = Router();
 
 router.get("/list", async (req: Request, res: Response) => {
-  //* Récupération de la liste des commentaires pour un article donné
+  //* Récupération de la liste des commentaires
   const list = await new CommentaireService().list();
 
   res.send(list);
 });
+
+router.get("/listByArticleId/:articleId", async (req: Request, res: Response) => {
+  const articleId = req.params.articleId;
+  //* Récupération de la liste des commentaires pour un article donné
+  const list = await new CommentaireService().listByArticleId(+articleId);
+  res.send(list);
+});
+
 router.post("/add", async (req, res) => {
   //* Création d'un commentaire
   try {
