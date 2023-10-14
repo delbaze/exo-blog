@@ -1,0 +1,47 @@
+import { Request, Response, Router } from "express";
+import CommentaireService from "../services/Commentaire.service";
+import { ICreateCommentaire } from "../types/Commentaire";
+const router = Router();
+
+router.get("/list/:articleId", async (req: Request, res: Response) => {
+  //* Récupération de la liste des commentaires pour un article donné
+  return await new CommentaireService().list();
+});
+router.post("/add", async (req, res) => {
+  //* Création d'un commentaire
+  try {
+    const data: ICreateCommentaire = req.body;
+    const commentaire = await new CommentaireService().create(data);
+    res.send(commentaire);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+});
+
+router.patch("/update/:id", async (req: Request, res: Response) => {
+  //* Modification d'un commentaire
+  const id = req.params.id;
+  const data: ICreateCommentaire = req.body;
+  try {
+    const commentaire = await new CommentaireService().update(+id, data);
+    res.send(commentaire);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+});
+
+router.delete("/delete/:id", async (req: Request, res: Response) => {
+  //* Suppression d'un commentaire
+  const id = req.params.id;
+  try {
+    const commentaire = await new CommentaireService().delete(+id);
+    res.send(commentaire);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+});
+
+export default router;

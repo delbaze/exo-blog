@@ -14,8 +14,11 @@ On prévoira une route pour la création d'un article (elle aussi, par soucis de
 Pour se faire, nous allons devoir : 
  - créer le dossier "**backend**"
  - initialiser le projet avec **npm init**
+ - initialiser le projet ts avec **tsc --init** (pour obtenir notre tsconfig.json)
  - prévoir le gitignore (qui comportera notre node_modules, le package-lock.json)
  - installer ce qui nous permettra de gérer la base de données (sqlite, typeorm) et créer le fichier "datasource" pour s'y connecter
+ - ne pas oublier d'activer les décorateurs dans le tsconfig ("emitDecoratorMetadata": true et "experimentalDecorators": true)
+ - permettre de ne pas avoir à déclarer chaque propriétées dans le constructeur ("strictPropertyInitialization": false dans le tsconfig)
  - démarrer le projet express (depuis le fichier index.ts)
  - prévoir nos routes (dans des dossiers dédiés) de CRUD (Create, Read, Update, Delete).
  
@@ -27,4 +30,10 @@ Cela ouvre donc la voie aux entités qui vont représenter ma base de données :
 - Article
 - Commentaire
 
-Ensuite, je devrais prévoir les services intermédiaires qui communiqueront avec la base de données
+Je vais les créer dans un dossier "entities".
+Je n'oublie pas le lien qu'il y aura entre Article et Commentaire (un article pourra avoir plusieurs commentaires).
+J'imagine aussi que si un article est supprimé, les commentaires liés seront supprimés également (Cascade)
+
+Ensuite, je devrais prévoir les services intermédiaires qui communiqueront avec la base de données (que je vais mettre dans un dossier "services")
+Pour ça, je vais imaginer une classe ArticleService, CommentaireService, dans un dossier services, et je vais y mettre les méthodes principales permettant le CRUD (liste, recherche d'un élément, mise à jour d'un élément, et suppression d'un élément).
+ 
