@@ -1,6 +1,7 @@
 import "reflect-metadata";
 import express from "express";
 import db from "./db";
+import cors from "cors";
 
 import articlesRouter from "./routes/articles.routes";
 import commentairesRouter from "./routes/commentaires.routes";
@@ -13,6 +14,7 @@ const port = 4000;
  *========================================================================**/
 
 app.use(express.json());
+app.use(cors({ origin: "http://localhost:3000" })); //un seul
 
 /**========================================================================
  *                           Routes
