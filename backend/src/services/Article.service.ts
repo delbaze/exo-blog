@@ -9,7 +9,7 @@ export default class ArticleService {
   }
 
   async list() {
-    return await this.db.find();
+    return await this.db.find({ relations: { commentaires: true } });
   }
 
   async findOne(id: number) {

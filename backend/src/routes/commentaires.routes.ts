@@ -3,9 +3,11 @@ import CommentaireService from "../services/Commentaire.service";
 import { ICreateCommentaire } from "../types/Commentaire";
 const router = Router();
 
-router.get("/list/:articleId", async (req: Request, res: Response) => {
+router.get("/list", async (req: Request, res: Response) => {
   //* Récupération de la liste des commentaires pour un article donné
-  return await new CommentaireService().list();
+  const list = await new CommentaireService().list();
+
+  res.send(list);
 });
 router.post("/add", async (req, res) => {
   //* Création d'un commentaire

@@ -3,9 +3,10 @@ import ArticleService from "../services/Article.service";
 import { ICreateArticle } from "../types/Article";
 const router = Router();
 
-router.get("/list", async () => {
+router.get("/list", async (req: Request, res: Response) => {
   //* Récupération de la liste des articles
-  return await new ArticleService().list();
+  const list =  await new ArticleService().list();
+  res.send(list)
 });
 router.post("/add", async (req: Request, res: Response) => {
   //* Création d'un article
