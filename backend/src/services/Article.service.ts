@@ -13,7 +13,10 @@ export default class ArticleService {
   }
 
   async findOne(id: number) {
-    return await this.db.findOneBy({ id });
+    return await this.db.findOne({
+      where: { id },
+      relations: { commentaires: true },
+    });
   }
 
   async create(data: ICreateArticle) {

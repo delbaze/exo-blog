@@ -22,6 +22,9 @@ export class Commentaire {
   @Column({ nullable: true, type: "text" })
   message: string;
 
+  @Column({ default: null, type: "text" })
+  author?: string;
+  
   @CreateDateColumn()
   createdAt: string;
 
@@ -34,5 +37,4 @@ export class Commentaire {
     onDelete: "CASCADE",
   })
   article: Article;
-
 }

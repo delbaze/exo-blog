@@ -21,7 +21,9 @@ router.post("/add", async (req, res) => {
   //* Création d'un commentaire
   try {
     const data: ICreateCommentaire = req.body;
+    console.log("DATA", data);
     const commentaire = await new CommentaireService().create(data);
+    console.log('%c⧭', 'color: #00e600', commentaire);
     res.send(commentaire);
   } catch (err) {
     console.log(err);

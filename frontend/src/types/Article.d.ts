@@ -1,3 +1,4 @@
+import { Commentaire } from "./Commentaire";
 export interface Article {
   id: number;
   title: string;
@@ -5,5 +6,5 @@ export interface Article {
   picture: string;
   createdAt: string;
   updatedAt: string;
-  commentaires?: Commentaire[];
+  commentaires: Commentaire[];
 }

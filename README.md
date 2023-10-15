@@ -34,3 +34,11 @@ Pour pouvoir interoger le backend, il faut autoriser le front à y accéder.
 Pour ça, il faut modifier désormais le back (le fichier index.ts) pour rajouter CORS (npm i cors puis npm i --save-dev @types/cors).
 Regarder l'index.ts du back pour vous aider si besoin.
 
+Je modifie également la requête dans les routes de "article" pour permettre de récupérer la relation "commentaires" au moment de récupérer le détail d'un article.
+Ca me permettra d'afficher la liste des commentaires sous l'article.
+
+Je modifie l'entité Commentaire côté back pour prévoir le cas où l'auteur est anonyme : 
+@Column({ default: null, type: "text" })
+author?: string;
+
+Je rajoute donc un champs dans mon formulaire "alias" pour celui qui souhaiterait rajouter un nom d'auteur.

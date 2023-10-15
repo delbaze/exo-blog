@@ -23,6 +23,7 @@ export default class CommentaireService {
 
   async create(data: ICreateCommentaire) {
     const { articleId, ...rest } = data;
+    console.log('DATA 2', data);
     const article = await new ArticleService().findOne(+articleId);
     if (!article) {
       throw new Error("Article introuvable");
