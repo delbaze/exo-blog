@@ -36,4 +36,6 @@ J'imagine aussi que si un article est supprimé, les commentaires liés seront s
 
 Ensuite, je devrais prévoir les services intermédiaires qui communiqueront avec la base de données (que je vais mettre dans un dossier "services")
 Pour ça, je vais imaginer une classe ArticleService, CommentaireService, dans un dossier services, et je vais y mettre les méthodes principales permettant le CRUD (liste, recherche d'un élément, mise à jour d'un élément, et suppression d'un élément).
- 
+
+
+On passe au front ici : (2 - Création front)[https://github.com/delbaze/exo-blog/tree/2-creation-front]
